@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Temperature Dial using mouse wheel</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="area">
+		<div id="dial_bg">
+			<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+				<linearGradient id="gradient" x1="0" x2="1" y1="0" y2="0">
+					<stop offset="0%" stop-color="#4fa6ce"/>
+					<stop offset="33%" stop-color="#6fddca"/>
+					<stop offset="66%" stop-color="#e79161"/>
+					<stop offset="100%" stop-color="#c1574d"/>
+				</linearGradient>
+				<path d="M80.3 419.7 A240 240, 0, 1, 1, 419.7 419.7" stroke=url(#gradient) fill="none" stroke-width="20" stroke-linecap="round"/>
+			</svg>
+			<div id="dial">
+				<div id="dial-pointer"></div>
+				<div id="value-box">
+					<span id="value">0</span>
+					<span id="unit">º</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		const full_range = 270;
+		const min = 0;
+		const max = 100;
+		let value = 0;
+
+		const el_dial = document.querySelector('#dial');
+		const el_dial_pointer = document.querySelector('#dial-pointer');
+		const el_value = document.querySelector('#value');
+		el_dial.addEventListener('mousewheel', (e) => {
+			if(e.wheelDelta > 0) {
+				// increase
+				value = value >= max ? value : ++value;
+			} else {
+				// decrease
+				value = value <= min ? value : --value;
+			}
+			const angle = parseInt(full_range / (max - min) * value);
+			el_value.textContent = `${value}`;
+			el_dial_pointer.style.transform = `rotate(${angle}deg)`;
+			el_dial_pointer.style.setProperty('--rotate', `rotate(${-angle}deg)`);
+		})
+	</script>
+</body>
+</html>

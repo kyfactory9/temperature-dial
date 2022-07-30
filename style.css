@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: #40444c;
+}
+
+#area {
+	position: relative;
+	width: 960px;
+	height: 615px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#dial_bg {
+	position: relative;
+	width: 520px;
+	height: 520px;
+	border-radius: 50%;
+	background: linear-gradient(180deg, #252b32, #2a2f37);
+	box-shadow: inset 0 2px 2px rgba(0, 0, 0, .1),
+	0 2px 2px rgba(255, 255, 255, .1);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#dial {
+	position: absolute;
+	width: 440px;
+	height: 440px;
+	border-radius: 50%;
+	background: linear-gradient(180deg, #565a62, #3a3f49);
+	box-shadow: inset 0 2px 2px rgba(255, 255, 255, .1),
+	inset 0 -2px 2px rgba(0, 0, 0, .1),
+	0 20px 20px rgba(0, 0, 0, .4),
+	0 50px 50px rgba(0, 0, 0, .3),
+	0 70px 70px rgba(0, 0, 0, .3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#dial::before {
+	content: '';
+	position: absolute;
+	width: 330px;
+	height: 330px;
+	border-radius: 50%;
+	background: linear-gradient(180deg, #0f1a1f, #181b23);
+	box-shadow: 0 -5px 2px rgba(0, 0, 0, .2),
+	0 5px 2px rgba(255, 255, 255, .1);
+}
+
+#dial-pointer {
+	position: absolute;
+	width: 311.12px;
+	height: 311.12px;
+	transform: rotate(0deg);
+}
+
+#dial-pointer::before {
+	content: '';
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 5px;
+	top: 276.12px;
+	border-radius: 50%;
+	background: #3f444e;
+	box-shadow: inset 0 7px 7px rgba(0, 0, 0, .2),
+	0 1px 2px rgba(255, 255, 255, .2);
+	transform: var(--rotate, rotate(0deg));
+}
+
+#value-box {
+	position: absolute;
+	color: white;
+}
+
+#value {
+	font-size: 8em;
+	font-weight: 600;
+}
+
+#unit {
+	display: inline-block;
+	font-size: 5em;
+	font-weight: 600;
+	vertical-align: top;
+	padding-top: 20px;
+}
